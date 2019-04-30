@@ -1,0 +1,58 @@
+TO FOLLOW BLACK LINE 
+If distance from the middle is less than zero
+	Put more power into one motor to counter act movement 
+If distance from the middle is more than zero 
+	Put more power into the other motor to counter act movement 
+
+FOR BLACK LINE BREAK 
+Add delay in if statements above then retest the black line
+	If no black line is detected.
+		Stop and turn around
+
+FOR BLACK LINE FADING 
+Make the thresh hold for a white line equal to the line 
+
+EXPANDING LINE 
+Works in code  
+
+CURVED CORNER 
+Works in code
+
+CURVED LINE 
+Works in code 
+
+SHARP 90 DEGREE CORNER & DISTRACTION LINES
+If the direction of corners sensors are all black 
+	Turn in direction
+	If the left sensor detects a continuation of the line 
+		Stop turn back and continue 
+
+RUMBLE STRIP 
+If the left and right sensors are equal 
+	If the time between line 1 and line 2 is shorter than line 2 and line 3 
+		Accelerate 
+	If the time between line 1 and 2 is larger than line 2 and 3 
+		Decelerate 
+
+DIVERGING LINES 
+It will follow whatever line it wants 
+
+PARALLEL HALLWAY && CONVERGENT HALLWAY
+IF the line ends and at angle =160 distance less than an amount and at angle 20 distance is less than an amount 
+	Each motor the same 
+
+DYNAMIC GATE & DEAD END
+When it approaches a wall when on the black line then it 
+Stops for delay
+Retests if wall is still there 
+If wall is not there 
+	Move forwards 
+Else 
+	Turn around
+
+GARAGE
+IF line ends and there is a wall 
+	Stop
+
+
+
