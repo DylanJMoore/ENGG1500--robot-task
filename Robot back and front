@@ -88,8 +88,7 @@ void loop() {
                     if(angle_at_shortest_distance<90)
                       { 
                       Serial.println("hello");
-                        for(int count=0;count++;count=5)
-                        {
+                        
                           angle2=90;
                           servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
@@ -103,7 +102,7 @@ void loop() {
                             analogWrite(6,0);
                             break;
                           }
-                          if(distance2_mm>50)
+                          else if(distance2_mm>50)
                           {
                             leftBackwards();
                             rightBackwards();
@@ -111,15 +110,12 @@ void loop() {
                             analogWrite(6,0);
                             delay(1000);
                           }
-                        }
-                      
-                            
+                     
                       }
                       else if(angle_at_shortest_distance>90)
                       { 
                         Serial.println("hello");
-                            for(int count=0;count++;count=5)
-                        {
+                           
                           angle2=90;
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
@@ -132,7 +128,7 @@ void loop() {
                             analogWrite(6,0);
                             break;
                           }
-                          if(distance2_mm>50)
+                          else if(distance2_mm>50)
                           {
                             leftBackwards();
                             rightBackwards();
@@ -140,9 +136,9 @@ void loop() {
                             analogWrite(6,80);
                             delay(1000);
                           }
-                        }
-                       
                       }
+                       
+            
                       else
                        {
                           angle2 = 0;
@@ -215,8 +211,7 @@ void loop() {
                     if(angle_at_shortest_distance<90)
                       { 
                         Serial.println("hello");
-                        for(int count=0;count++;count=5)
-                        {
+                       
                           angle2=90;
                           servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
@@ -230,7 +225,7 @@ void loop() {
                             analogWrite(6,0);
                             break;
                           }
-                          if(distance2_mm>50)
+                          else if(distance2_mm>50)
                           {
                             leftBackwards();
                             rightBackwards();
@@ -238,14 +233,13 @@ void loop() {
                             analogWrite(6,0);
                             delay(1000);
                           }
-                        }
+                        
                             
                       }
                       if(angle_at_shortest_distance>90)
                       { 
                         Serial.println("hello");
-                            for(int count=0;count++;count=5)
-                        {
+                           
                           angle2=90;
                           servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
@@ -259,7 +253,7 @@ void loop() {
                             analogWrite(6,0);
                             break;
                           }
-                          if(distance2_mm>50)
+                          else if(distance2_mm>50)
                           {
                             leftBackwards();
                             rightBackwards();
@@ -267,7 +261,7 @@ void loop() {
                             analogWrite(6,80);
                             delay(1000);
                           }
-                        }
+                        
                         
                       }
                       else
