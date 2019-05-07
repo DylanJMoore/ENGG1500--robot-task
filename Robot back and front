@@ -83,22 +83,24 @@ void loop() {
                         angle_at_shortest_distance=angle2;
                       }
               }
-               for(angle2 = 180; angle2 > 0; angle2=angle2-20)
-              {
-                
-              }
-                    delay(1000);
+         
+                    
                     if(angle_at_shortest_distance<90)
                       { 
-                      
+                      Serial.println("hello");
                         for(int count=0;count++;count=5)
                         {
                           angle2=90;
+                          servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
                           if(distance2_mm<50)
                           {
+                            leftBackwards();
+                            rightBackwards();
+                            analogWrite(5,0);
+                            analogWrite(6,0);
                             break;
                           }
                           if(distance2_mm>50)
@@ -113,8 +115,9 @@ void loop() {
                       
                             
                       }
-                      if(angle_at_shortest_distance>90)
+                      else if(angle_at_shortest_distance>90)
                       { 
+                        Serial.println("hello");
                             for(int count=0;count++;count=5)
                         {
                           angle2=90;
@@ -123,6 +126,10 @@ void loop() {
                           Serial.println(distance2_mm);
                           if(distance2_mm<50)
                           {
+                            leftBackwards();
+                            rightBackwards();
+                            analogWrite(5,0);
+                            analogWrite(6,0);
                             break;
                           }
                           if(distance2_mm>50)
@@ -134,8 +141,18 @@ void loop() {
                             delay(1000);
                           }
                         }
-                            
+                       
                       }
+                      else
+                       {
+                          angle2 = 0;
+                          servo2.write(angle2);
+                            leftBackwards();
+                            rightBackwards();
+                            analogWrite(5,0);
+                            analogWrite(6,80);
+                            delay(1000);     
+                       }
               
           }
             servo2.write(angle2);
@@ -174,7 +191,8 @@ void loop() {
               rightBackwards();
               analogWrite(5,0);
               analogWrite(6,0);
-              angle2==20;
+              angle2=20;
+              servo2.write(angle2);
               unsigned int store_distance=500;
               int angle_at_shortest_distance;
               Serial.print("Distance Back="); //print the result to the serial monitor
@@ -192,20 +210,24 @@ void loop() {
                         angle_at_shortest_distance=angle2;
                       }
               }
-               for(angle2 = 180; angle2 > 0; angle2=angle2-20)
-              {
-              }
-                    delay(500);
+      
+             
                     if(angle_at_shortest_distance<90)
                       { 
+                        Serial.println("hello");
                         for(int count=0;count++;count=5)
                         {
                           angle2=90;
+                          servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
                           if(distance2_mm<50)
                           {
+                            leftBackwards();
+                            rightBackwards();
+                            analogWrite(5,0);
+                            analogWrite(6,0);
                             break;
                           }
                           if(distance2_mm>50)
@@ -221,14 +243,20 @@ void loop() {
                       }
                       if(angle_at_shortest_distance>90)
                       { 
+                        Serial.println("hello");
                             for(int count=0;count++;count=5)
                         {
                           angle2=90;
+                          servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
                           if(distance2_mm<50)
                           {
+                            leftBackwards();
+                            rightBackwards();
+                            analogWrite(5,0);
+                            analogWrite(6,0);
                             break;
                           }
                           if(distance2_mm>50)
@@ -240,8 +268,16 @@ void loop() {
                             delay(1000);
                           }
                         }
-                            
+                        
                       }
+                      else
+                        {
+                            leftBackwards();
+                            rightBackwards();
+                            analogWrite(5,0);
+                            analogWrite(6,80);
+                            delay(1000);   
+                        }
          }
               servo2.write(angle2);                                 
               servo.write(angle);           
