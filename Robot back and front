@@ -87,7 +87,7 @@ void loop() {
                     
                     if(angle_at_shortest_distance<90)
                       { 
-                      Serial.println("hello");
+                     
                         
                           angle2=90;
                           servo2.write(angle2);
@@ -114,7 +114,7 @@ void loop() {
                       }
                       else if(angle_at_shortest_distance>90)
                       { 
-                        Serial.println("hello");
+                        
                            
                           angle2=90;
                           distance2_mm=sonar2_mm();                      
@@ -210,8 +210,7 @@ void loop() {
              
                     if(angle_at_shortest_distance<90)
                       { 
-                        Serial.println("hello");
-                       
+                        
                           angle2=90;
                           servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
@@ -238,8 +237,7 @@ void loop() {
                       }
                       if(angle_at_shortest_distance>90)
                       { 
-                        Serial.println("hello");
-                           
+                       
                           angle2=90;
                           servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
