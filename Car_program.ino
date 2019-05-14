@@ -50,6 +50,7 @@ void setup() {
 }
   
 void loop() {
+ 
     for(angle = 20; angle < 160; angle=angle+10)  
   { 
       unsigned int distance_mm = 0; //This variable will hold the distance
@@ -96,7 +97,8 @@ void loop() {
               rightBackwards();
               analogWrite(5,0);
               analogWrite(6,0);
-              angle2==20;
+              angle2==0;
+              servo2.write(angle2);
               unsigned int store_distance=500;
               int angle_at_shortest_distance;
               Serial.print("Distance Back="); //print the result to the serial monitor
@@ -114,7 +116,8 @@ void loop() {
                         angle_at_shortest_distance=angle2;
                       }
               }
-         
+              angle2=angle_at_shortest_distance;
+              servo2.write(angle2);
                     
                     if(angle_at_shortest_distance<90)
                       { 
@@ -148,6 +151,7 @@ void loop() {
                         
                            
                           angle2=90;
+                          servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
@@ -187,7 +191,7 @@ void loop() {
             delay(15);                   
       } 
   // now scan back from 180 to 0 degrees
-  for(angle = 160; angle > 20; angle=angle-10)    
+  for(angle = 180; angle > 0; angle=angle-10)    
         { 
         unsigned int distance_mm = 0; //This variable will hold the distance
         unsigned int distance2_mm = 0;
@@ -257,7 +261,8 @@ void loop() {
                         angle_at_shortest_distance=angle2;
                       }
               }
-      
+              angle2=angle_at_shortest_distance;
+              servo2.write(angle2);
              
                     if(angle_at_shortest_distance<90)
                       { 
@@ -326,43 +331,8 @@ void loop() {
               servo.write(angle);           
               delay(15);       
       } 
- 
-  unsigned int distance_mm = 0; //This variable will hold the distance
-  unsigned int distance2_mm = 0;
-  leftForwards();
-  rightForwards();
-  distance_mm = sonar_mm(); //call the function sonar_mm and store the result in distance_mm
-  distance2_mm = sonar2_mm();
-  Serial.print("Distance Front="); //print the result to the serial monitor
-  Serial.println(distance_mm);
-  Serial.print("Distance Back="); //print the result to the serial monitor
-  Serial.println(distance2_mm);
-  int sensorVal = digitalRead(A5);
-  Serial.println(sensorVal);
-  
 
-  if (distance_mm>100 && distance_mm<=150 && sensorVal==0)
-  {
-    leftForwards();
-    rightForwards();
-    Serial.print("Distance=");
-    Serial.println(distance_mm);
-    analogWrite(5,90);  //set the left motor to half speed (ish)
-    analogWrite(6,70); //set the right motor to half speed (ish)
-  }
-  else if (distance_mm > 150 && sensorVal==0)
-  
-  { 
-    leftForwards();
-    rightForwards();   
-    analogWrite(5,70);  //set the left motor to full speed (ish)
-    analogWrite(6,90); //set the right motor to full speed (ish)
-  }
-  else{
-    analogWrite(5,0);
-    analogWrite(6,0);
-  }
-  delay(100);
+
 }
 
 void leftForwards(void) //This function sets IN1 = LOW and IN2 = HIGH in order to set the direction to forwards for motor 1
