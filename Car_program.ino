@@ -50,6 +50,12 @@ void setup() {
 }
   
 void loop() {
+
+unsigned long time1 = millis();
+  if (time1 < 1000){
+    analogWrite(5,100);
+    analogWrite(6,100);
+  }
  
     for(angle = 20; angle < 160; angle=angle+10)  
   { 
@@ -97,8 +103,7 @@ void loop() {
               rightBackwards();
               analogWrite(5,0);
               analogWrite(6,0);
-              angle2==0;
-              servo2.write(angle2);
+             
               unsigned int store_distance=500;
               int angle_at_shortest_distance;
               Serial.print("Distance Back="); //print the result to the serial monitor
@@ -122,9 +127,6 @@ void loop() {
                     if(angle_at_shortest_distance<90)
                       { 
                      
-                        
-                          angle2=90;
-                          servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
@@ -139,9 +141,9 @@ void loop() {
                           else if(distance2_mm>50)
                           {
                             leftBackwards();
-                            rightBackwards();
-                            analogWrite(5,80);
-                            analogWrite(6,0);
+                            rightForwards();
+                            analogWrite(5,100);
+                            analogWrite(6,100);
                             delay(1000);
                           }
                      
@@ -150,8 +152,6 @@ void loop() {
                       { 
                         
                            
-                          angle2=90;
-                          servo2.write(angle2);
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
@@ -165,24 +165,23 @@ void loop() {
                           }
                           else if(distance2_mm>50)
                           {
-                            leftBackwards();
+                            leftForwards();
                             rightBackwards();
-                            analogWrite(5,0);
-                            analogWrite(6,80);
+                            analogWrite(5,100);
+                            analogWrite(6,100);
                             delay(1000);
                           }
                       }
-                       
+                 
             
                       else
                        {
-                          angle2 = 0;
-                          servo2.write(angle2);
+                          
                             leftBackwards();
-                            rightBackwards();
-                            analogWrite(5,0);
-                            analogWrite(6,80);
-                            delay(1000);     
+                            rightForwards();
+                            analogWrite(5,100);
+                            analogWrite(6,100);
+                            delay(1000);  
                        }
               
           }
@@ -242,8 +241,7 @@ void loop() {
               rightBackwards();
               analogWrite(5,0);
               analogWrite(6,0);
-              angle2=20;
-              servo2.write(angle2);
+              
               unsigned int store_distance=500;
               int angle_at_shortest_distance;
               Serial.print("Distance Back="); //print the result to the serial monitor
@@ -267,8 +265,7 @@ void loop() {
                     if(angle_at_shortest_distance<90)
                       { 
                         
-                          angle2=90;
-                          servo2.write(angle2);
+                          
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
@@ -283,9 +280,9 @@ void loop() {
                           else if(distance2_mm>50)
                           {
                             leftBackwards();
-                            rightBackwards();
-                            analogWrite(5,80);
-                            analogWrite(6,0);
+                            rightForwards();
+                            analogWrite(5,100);
+                            analogWrite(6,100);
                             delay(1000);
                           }
                         
@@ -294,8 +291,7 @@ void loop() {
                       if(angle_at_shortest_distance>90)
                       { 
                        
-                          angle2=90;
-                          servo2.write(angle2);
+                          
                           distance2_mm=sonar2_mm();                      
                           Serial.print("Distance Back="); //print the result to the serial monitor
                           Serial.println(distance2_mm);
@@ -309,10 +305,10 @@ void loop() {
                           }
                           else if(distance2_mm>50)
                           {
-                            leftBackwards();
+                            leftForwards();
                             rightBackwards();
-                            analogWrite(5,0);
-                            analogWrite(6,80);
+                            analogWrite(5,100);
+                            analogWrite(6,100);
                             delay(1000);
                           }
                         
@@ -320,11 +316,11 @@ void loop() {
                       }
                       else
                         {
-                            leftBackwards();
+                            leftForwards();
                             rightBackwards();
-                            analogWrite(5,0);
-                            analogWrite(6,80);
-                            delay(1000);   
+                            analogWrite(5,100);
+                            analogWrite(6,100);
+                            delay(1000);
                         }
          }
               servo2.write(angle2);                                 
