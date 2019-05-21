@@ -1,10 +1,10 @@
 #include <Servo.h>
 
 //Distances from the centroid of the robot to the centre of each sensor in mm 
-float x1 = -22.5;
+float x1 = -23.5;
 float x2 = -7.5;
 float x3 = 7.5;
-float x4 = 22.5;
+float x4 = 23.5;
 
 //Variables to store each data point in
 float w1;
@@ -60,18 +60,18 @@ void loop() {
   distance_mm = sonar_mm();
   float lineDist = num/den;  
   float error = 0 - lineDist;
-  float Kp = 3.225;
-  int leftPwm = 58 + Kp*error; 
-  int rightPwm = 58 - Kp*error;
+  float Kp = 3.35;
+  int leftPwm = 57.5 + Kp*error; 
+  int rightPwm = 57.5 - Kp*error;
   leftForwards();
   rightForwards();
   Serial.print("Distance from line = ");
   Serial.println(lineDist);
   analogWrite(5, leftPwm);
   analogWrite(6, rightPwm);
-  L=digitalRead(A2);
+  L=digitalRead(A5);
   ML=digitalRead(A3);
-  MR=digitalRead(A5);
+  MR=digitalRead(A2);
   R=digitalRead(A1); 
   Serial.print("L = ");
    Serial.println(L);
@@ -81,35 +81,35 @@ void loop() {
    Serial.println(MR);
    Serial.print("R = ");
    Serial.println(R); 
-  if(L==1 && R==0)
-  {
-      analogWrite(5,0);  
-      analogWrite(6,90);
-  }
-  if(R==1 && L==0 )
-  {
-      analogWrite(5,90);  
-      analogWrite(6,0);
-  }
-  if(R==1 && MR==1 && ML==1 && L==1)
-  {
-    analogWrite(5,40);  
-    analogWrite(6,40);
-    delay (50);
-  }
-  if(distance_mm <= 100)
-  {
-      leftBackwards();
-      rightBackwards();
-      analogWrite(5,0);  
-      analogWrite(6,100);
-      delay (1000);
-      leftForwards();
-      rightForwards();
-      analogWrite(5,100);  
-      analogWrite(6,0);
-      delay (1000);
-  }
+//  if(L==1 && R==0)
+//  {
+//      analogWrite(5,0);  
+//      analogWrite(6,90);
+//  }
+//  if(R==1 && L==0 )
+//  {
+//      analogWrite(5,90);  
+//      analogWrite(6,0);
+//  }
+//  if(R==1 && MR==1 && ML==1 && L==1)
+//  {
+//    analogWrite(5,40);  
+//    analogWrite(6,40);
+//    delay (50);
+//  }
+//  if(distance_mm <= 100)
+//  {
+//      leftBackwards();
+//      rightBackwards();
+//      analogWrite(5,0);  
+//      analogWrite(6,100);
+//      delay (1000);
+//      leftForwards();
+//      rightForwards();
+//      analogWrite(5,100);  
+//      analogWrite(6,0);
+//      delay (1000);
+//  }
 }
     
 void leftForwards(void) //This function sets IN1 = LOW and IN2 = HIGH in order to set the direction to forwards for motor 1
