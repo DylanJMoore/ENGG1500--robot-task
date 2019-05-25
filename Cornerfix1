@@ -86,6 +86,11 @@ void loop() {
     analogWrite(5, 57.5+0.60*Kp*error);
     analogWrite(6, 57.5-0.60*Kp*error);
    }
+     if(lineDist<-15 || lineDist>15)
+   {
+    analogWrite(5, 50+0.50*Kp*error);
+    analogWrite(6, 50-0.50*Kp*error);
+   }
 //  if(L==1 && R==0)
 //  {
 //      analogWrite(5,0);  
