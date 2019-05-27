@@ -267,7 +267,7 @@ void loop() {
       }
       leftForwards();
       rightForwards();
-      analogWrite(5,60);  
+      analogWrite(5,70);  
       analogWrite(6,60);
   }
 }
