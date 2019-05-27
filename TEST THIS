@@ -94,7 +94,7 @@ void loop() {
 
   if(L==0 && ML==0 && MR==0 && R==0)
   {
-    analogWrite(5, 70);
+    analogWrite(5, 75);
     analogWrite(6, 50);
   }
    
