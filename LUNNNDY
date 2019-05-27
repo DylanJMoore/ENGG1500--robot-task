@@ -49,20 +49,22 @@ void setup() {
 }
   
 void loop() {
+  angle=90;
+  servo.write(angle);
   unsigned int distance_mm = 0;
   w1 = analogRead(A1);
   w2 = analogRead(A2);
   w3 = analogRead(A3);
   w4 = analogRead(A5);
-
+  
   num = (w1 * x1) + (w2 * x2) + (w3 * x3) + (w4 * x4);
   den = w1 + w2 + w3 + w4;
   distance_mm = sonar_mm();
   float lineDist = num/den;  
   float error = 0 - lineDist;
   float Kp = 3.35;
-  int leftPwm = 57.5 + Kp*error; 
-  int rightPwm = 57.5 - Kp*error;
+  int leftPwm = 60 + Kp*error; 
+  int rightPwm = 60 - Kp*error;
   leftForwards();
   rightForwards();
   Serial.print("Distance from line = ");
@@ -82,16 +84,16 @@ void loop() {
    Serial.print("R = ");
    Serial.println(R); 
    
-   if(lineDist<-12)
+   if(lineDist>12)
    {
     leftForwards();
     rightForwards();
-    analogWrite(5, 0);
-    analogWrite(6, 0);
-    delay (500);
+    //analogWrite(5, 0);
+    //analogWrite(6, 0);
+    //delay (500);
     analogWrite(5, 0);
     analogWrite(6, 70);
-    delay (150);
+    //delay (200);
     w1 = analogRead(A1);
     w2 = analogRead(A2);
     w3 = analogRead(A3);
@@ -101,29 +103,30 @@ void loop() {
     den = w1 + w2 + w3 + w4;
     distance_mm = sonar_mm();
     lineDist = num/den;
-    if(lineDist>-8)
+    if(lineDist>8)
     {  
-      analogWrite(5, 100);
+      analogWrite(5, 0);
       analogWrite(6, 100);
       
     }
     else 
     {
-      analogWrite(5, 0);
-      analogWrite(6, 90);
+      analogWrite(5, 100);
+      analogWrite(6, 100);
+      
     }
    }
    
-   if(lineDist>12)
+   if(lineDist<-12)
    {
     leftForwards();
     rightForwards();
-    analogWrite(5, 0);
-    analogWrite(6, 0);
-    delay (500);
+    //analogWrite(5, 0);
+    //analogWrite(6, 0);
+    //delay (500);
     analogWrite(5, 70);
     analogWrite(6, 0);
-    delay (150);
+    //delay (200);
     w1 = analogRead(A1);
     w2 = analogRead(A2);
     w3 = analogRead(A3);
@@ -133,60 +136,29 @@ void loop() {
     den = w1 + w2 + w3 + w4;
     distance_mm = sonar_mm();
     lineDist = num/den;
-    if(lineDist>8)
+    if(lineDist<-8)
     {  
       analogWrite(5, 100);
-      analogWrite(6, 100);
-
-    }
-    else 
-    {
-      analogWrite(5, 90);
       analogWrite(6, 0);
-    }
-   }
-    if(lineDist<-15)
-   {
-    leftForwards();
-    rightForwards();
-    analogWrite(5, 0);
-    analogWrite(6, 0);
-    delay (500);
-    analogWrite(5, 100);
-    analogWrite(6, 0);
-    delay (150);
-    w1 = analogRead(A1);
-    w2 = analogRead(A2);
-    w3 = analogRead(A3);
-    w4 = analogRead(A5);
-
-    num = (w1 * x1) + (w2 * x2) + (w3 * x3) + (w4 * x4);
-    den = w1 + w2 + w3 + w4;
-    distance_mm = sonar_mm();
-    lineDist = num/den;
-    if(lineDist>-8)
-    {  
-      analogWrite(5, 100);
-      analogWrite(6, 100);
 
     }
     else 
     {
-      analogWrite(5, 0);
+      analogWrite(5, 100);
       analogWrite(6, 100);
+
     }
-    
    }
     if(lineDist>15)
    {
     leftForwards();
     rightForwards();
-    analogWrite(5, 0);
+    //analogWrite(5, 0);
+    //analogWrite(6, 0);
+    //delay (500);
+    analogWrite(5, 100);
     analogWrite(6, 0);
-    delay (500);
-    analogWrite(5, 0);
-    analogWrite(6, 100);
-    delay (150);
+    //delay (200);
     w1 = analogRead(A1);
     w2 = analogRead(A2);
     w3 = analogRead(A3);
@@ -198,14 +170,49 @@ void loop() {
     lineDist = num/den;
     if(lineDist>8)
     {  
-      analogWrite(5, 100);
-      analogWrite(6, 100);
+      analogWrite(5, 0);
+      analogWrite(6, 110);
 
     }
     else 
     {
       analogWrite(5, 100);
+      analogWrite(6, 100);
+
+    }
+    
+   }
+   
+    if(lineDist<-15)
+   {
+    leftForwards();
+    rightForwards();
+    //analogWrite(5, 0);
+    //analogWrite(6, 0);
+    //delay (500);
+    analogWrite(5, 0);
+    analogWrite(6, 100);
+    //delay (200);
+    w1 = analogRead(A1);
+    w2 = analogRead(A2);
+    w3 = analogRead(A3);
+    w4 = analogRead(A5);
+
+    num = (w1 * x1) + (w2 * x2) + (w3 * x3) + (w4 * x4);
+    den = w1 + w2 + w3 + w4;
+    distance_mm = sonar_mm();
+    lineDist = num/den;
+    if(lineDist<-8)
+    {  
+      analogWrite(5, 110);
       analogWrite(6, 0);
+
+    }
+    else 
+    {
+      analogWrite(5, 100);
+      analogWrite(6, 100);
+
     }
     
    }
@@ -219,12 +226,22 @@ void loop() {
 //      analogWrite(5,90);  
 //      analogWrite(6,0);
 //  }
-//  if(R==1 && MR==1 && ML==1 && L==1)
-//  {
-//    analogWrite(5,40);  
-//    analogWrite(6,40);
-//    delay (50);
-//  }
+//  if(R==0 && MR==0 && ML==0 && L==0)
+  //{
+    //analogWrite(5,60);  
+    //analogWrite(6,80);
+    //delay (1000);
+    //L=digitalRead(A5);
+    //ML=digitalRead(A3);
+    //MR=digitalRead(A2);
+    //R=digitalRead(A1); 
+    //if(R==0 && MR==0 && ML==0 && L==0)
+    //{
+     // analogWrite(5,0);  
+      //analogWrite(6,80);
+    //}
+    
+ // }
 //  if(distance_mm <= 100)
 //  {
 //      leftBackwards();
